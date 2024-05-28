@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QCM Node.js</title>
+</head>
+<body>
+    <h1><%= question.question %></h1>
+    <% if (typeof error !== 'undefined') { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form action="/question/<%= questionId %>" method="post">
+        <% question.choices.forEach(choice => { %>
+            <div>
+                <input type="radio" id="<%= choice %>" name="answer" value="<%= choice %>">
+                <label for="<%= choice %>"><%= choice %></label>
+            </div>
+        <% }); %>
+        <button type="submit">Corriger</button>
+    </form>
+</body>
+</html>
